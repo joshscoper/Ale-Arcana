@@ -1,0 +1,236 @@
+/* Basic CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #3e2a19; /* Medieval brown text */
+  background-color: #f5e3c1; /* Warm parchment-like */
+  line-height: 1.6;
+}
+
+/* 🌞 Day Mode - Warm, Fantasy-Themed */
+#about,
+.discord-join,
+footer {
+  background: rgba(255, 245, 230, 0.9); /* Light parchment backgrounds */
+  color: #3e2a19;
+}
+
+/* Navigation */
+nav {
+  background: rgba(135, 76, 36, 0.9); /* Warm brown leather nav */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ffcc00;
+}
+
+/* Dark Mode Toggle Button */
+.theme-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 20px;
+  padding: 10px;
+  transition: color 0.3s;
+}
+
+.theme-btn:hover {
+  color: #ffcc00;
+}
+
+/* Hero Section */
+header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('https://i.redd.it/some-pictures-i-took-at-our-modded-rpg-world-v0-ehl8dhgs9f1e1.jpg?width=1920&format=pjpg&auto=webp') no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+/* Logo */
+.logo {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 153, 255, 0.8);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-btn {
+  display: inline-block;
+  background: #d4a373; /* Golden brown button */
+  color: #3e2a19;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: #b87f50;
+}
+
+/* Smooth Transition Between Sections */
+.section-transition {
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(28, 28, 28, 1));
+}
+
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.feature {
+  background: rgba(250, 225, 195, 0.85); /* Light parchment */
+  color: #3e2a19;
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.feature:hover {
+  box-shadow: 0 0 12px rgba(255, 153, 0, 0.6); /* Golden glow */
+  transform: translateY(-5px);
+}
+
+.feature img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform 0.3s ease;
+}
+
+.feature:hover img {
+  transform: scale(1.1);
+}
+
+/* Discord Join Us Section */
+.discord-join {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  color: #fff;
+}
+
+.discord-btn {
+  display: inline-flex;
+  align-items: center;
+  background: #5865F2;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 14px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.discord-btn img {
+  width: 38px;
+  height: 38px;
+  margin-right: 12px;
+  transition: transform 0.3s ease;
+}
+
+.discord-btn:hover {
+  background: #4852cc;
+  box-shadow: 0 0 15px rgba(88, 101, 242, 0.9);
+  transform: scale(1.05);
+}
+
+.discord-btn:hover img {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* 🌙 Night Mode - Dark, Mystical & RPG-Themed */
+body.dark-mode {
+  background-color: #121018;
+  color: #ddd;
+}
+
+body.dark-mode #about,
+body.dark-mode .discord-join,
+body.dark-mode footer {
+  background: rgba(20, 20, 20, 0.9);
+  color: #ddd;
+}
+
+body.dark-mode nav {
+  background: rgba(25, 25, 45, 0.9); /* Deep blue-black */
+}
+
+/* Buttons */
+body.dark-mode .hero-btn {
+  background: #6a0dad; /* Mystic purple */
+  color: white;
+}
+
+body.dark-mode .hero-btn:hover {
+  background: #520c99;
+}
+
+/* Features */
+body.dark-mode .feature {
+  background: rgba(40, 40, 60, 0.85); /* Darker blue-gray */
+}
+
+body.dark-mode .feature:hover {
+  box-shadow: 0 0 15px rgba(88, 101, 242, 0.8); /* Mystic blue glow */
+}
