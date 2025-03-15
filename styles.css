@@ -1,4 +1,4 @@
-/* Basic CSS Reset */
+/* ✅ Reset Defaults */
 * {
   margin: 0;
   padding: 0;
@@ -6,78 +6,132 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  color: #3e2a19; /* Medieval brown text */
-  background-color: #f5e3c1; /* Warm parchment-like */
+  font-family: "Arial", sans-serif;
+  background-color: #1a1a2e;
+  color: #f8f8f8;
   line-height: 1.6;
+  text-align: center;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* 🌞 Day Mode - Warm, Fantasy-Themed */
-#about,
-.discord-join,
-footer {
-  background: rgba(255, 245, 230, 0.9); /* Light parchment backgrounds */
+/* 🌞 Light Mode */
+body.light-mode {
+  background-color: #f4e8c1;
   color: #3e2a19;
 }
 
-/* Navigation */
+/* 📌 Navigation Bar */
 nav {
-  background: rgba(135, 76, 36, 0.9); /* Warm brown leather nav */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(25, 25, 45, 0.95);
+  padding: 1rem 2rem;
+  z-index: 1000;
+}
+
+body.light-mode nav {
+  background: rgba(135, 76, 36, 0.95);
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
 }
 
 nav ul li {
-  margin: 0 1rem;
+  margin-left: 1rem;
 }
 
 nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease;
+  padding: 8px 12px;
+  transition: background 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #ffcc00;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
 }
 
-/* Dark Mode Toggle Button */
-.theme-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-left: 20px;
-  padding: 10px;
-  transition: color 0.3s;
-}
-
-.theme-btn:hover {
-  color: #ffcc00;
-}
-
-/* Hero Section */
+/* Hero Section Base */
 header {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background: url('https://i.redd.it/some-pictures-i-took-at-our-modded-rpg-world-v0-ehl8dhgs9f1e1.jpg?width=1920&format=pjpg&auto=webp') no-repeat center center/cover;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center; /* centers text vertically */
+  padding: 7rem 2rem;
+  background: url("https://cdn.discordapp.com/attachments/1240690610101289122/1350505224686796952/hero-background.jpg?ex=67d6fb80&is=67d5aa00&hm=c0ca4c7a12e232649ad1058d79cc024df7366071b55ab24a37c217cd2d672231&") no-repeat center center/cover;
+  min-height: 500px;
+  position: relative;
   text-align: center;
-  color: #fff;
 }
 
-/* Logo */
+/* Dark Mode Overlay (Default) */
+header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Subtle dark overlay for dark mode */
+  z-index: 1;
+}
+
+/* Light Mode Overlay - Slightly darker to ensure text stands out */
+body.light-mode header::after {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Ensure hero text is above overlay */
+header h1,
+header p,
+header .logo-container {
+  position: relative;
+  z-index: 2;
+  color: #f8f8f8; /* Default text color for dark mode */
+  text-shadow: 1px 1px 2px #000; /* Basic text shadow for extra contrast */
+}
+
+/* Light Mode Hero Text - Force white + stronger shadow for bright backgrounds */
+body.light-mode header h1,
+body.light-mode header p,
+body.light-mode header .logo-container {
+  color: #fff;
+  text-shadow: 2px 2px 5px #000;
+}
+
+
+/* Optional Overlay for Better Hero Text Readability */
+header::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+/* Ensure Hero Text is Above Overlay */
+header h1,
+header p,
+.logo-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ✅ Glowing Logo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .logo {
   width: 250px;
   height: 250px;
@@ -87,86 +141,172 @@ header {
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+body.light-mode .logo {
+  box-shadow: 0 0 25px rgba(255, 165, 0, 0.8);
 }
 
-.hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-}
-
-.hero-btn {
-  display: inline-block;
-  background: #d4a373; /* Golden brown button */
-  color: #3e2a19;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-radius: 4px;
-  transition: background 0.3s ease;
-}
-
-.hero-btn:hover {
-  background: #b87f50;
-}
-
-/* Smooth Transition Between Sections */
+/* 📌 Section Transition Divider */
 .section-transition {
   width: 100%;
-  height: 50px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(28, 28, 28, 1));
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), var(--main-bg-color, #1a1a2e));
+}
+body.light-mode .section-transition {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), var(--main-bg-color, #f4e8c1));
 }
 
-/* Features Grid */
+/* 📌 Section Titles */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* 📌 Feature Cards */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
 }
 
 .feature {
-  background: rgba(250, 225, 195, 0.85); /* Light parchment */
-  color: #3e2a19;
-  padding: 1.5rem;
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(45, 45, 65, 0.9);
+  padding: 2rem;
+  border-radius: 12px;
   text-align: center;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.feature:hover {
-  box-shadow: 0 0 12px rgba(255, 153, 0, 0.6); /* Golden glow */
-  transform: translateY(-5px);
+body.light-mode .feature {
+  background: rgba(135, 76, 36, 0.95);
 }
 
 .feature img {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 1rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  transition: transform 0.3s ease;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
 }
 
-.feature:hover img {
-  transform: scale(1.1);
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(88, 101, 242, 0.8);
 }
 
-/* Discord Join Us Section */
-.discord-join {
+body.light-mode .feature:hover {
+  box-shadow: 0 0 15px rgba(255, 165, 0, 0.8);
+}
+
+/* 📌 Team Section with Flipping Cards */
+#team {
   text-align: center;
-  margin-top: 3rem;
-  padding: 2rem;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
+  padding: 4rem 2rem;
+}
+
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.team-card {
+  width: 280px;
+  height: 320px;
+  perspective: 1000px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.team-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  transition: transform 0.6s, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.team-card-front,
+.team-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+}
+
+/* FRONT CARD (Dark Mode) */
+.team-card-front {
+  background: rgba(45, 45, 65, 0.9);
   color: #fff;
+}
+
+/* FRONT CARD (Light Mode) */
+body.light-mode .team-card-front {
+  background: rgba(135, 76, 36, 0.95);
+  color: #3e2a19;
+}
+
+/* BACK CARD (Dark Mode) */
+.team-card-back {
+  background: rgba(35, 35, 55, 0.9);
+  color: #ddd;
+  transform: rotateY(180deg);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* BACK CARD (Light Mode) */
+body.light-mode .team-card-back {
+  background: rgba(155, 95, 45, 0.9);
+  color: #3e2a19;
+}
+
+/* Avatar on Front */
+.team-card-front img {
+  width: 128px;
+  height: 128px;
+  border-radius: 5px;
+}
+
+.team-card-front h3 {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.team-card-front p {
+  margin-top: 5px;
+  font-size: 1rem;
+}
+
+/* Flip on Hover & Glow (only on hover) */
+.team-card:hover .team-card-inner {
+  transform: rotateY(180deg);
+  box-shadow: 0 0 15px rgba(88, 101, 242, 0.8);
+}
+body.light-mode .team-card:hover .team-card-inner {
+  box-shadow: 0 0 15px rgba(255, 165, 0, 0.8);
+}
+
+/* 📌 Join Our Community Section */
+.discord-section {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.discord-section p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .discord-btn {
@@ -176,61 +316,79 @@ header {
   color: #fff;
   font-size: 1.3rem;
   font-weight: bold;
-  padding: 14px 24px;
+  padding: 14px 28px;
   border-radius: 10px;
   text-decoration: none;
-  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .discord-btn img {
-  width: 38px;
-  height: 38px;
-  margin-right: 12px;
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
   transition: transform 0.3s ease;
+}
+
+.discord-btn:hover img {
+  transform: rotate(10deg) scale(1.05);
 }
 
 .discord-btn:hover {
   background: #4852cc;
-  box-shadow: 0 0 15px rgba(88, 101, 242, 0.9);
   transform: scale(1.05);
 }
 
-.discord-btn:hover img {
-  transform: rotate(10deg) scale(1.1);
+/* 📌 Sticky Theme & Mute Toggle (Aligned Right) */
+.theme-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(15, 15, 25, 0.9);
+  padding: 10px 15px;
+  border-radius: 10px;
+  z-index: 1000;
 }
 
-/* 🌙 Night Mode - Dark, Mystical & RPG-Themed */
-body.dark-mode {
-  background-color: #121018;
-  color: #ddd;
+body.light-mode .theme-box {
+  background: rgba(135, 76, 36, 0.95);
 }
 
-body.dark-mode #about,
-body.dark-mode .discord-join,
-body.dark-mode footer {
-  background: rgba(20, 20, 20, 0.9);
-  color: #ddd;
-}
-
-body.dark-mode nav {
-  background: rgba(25, 25, 45, 0.9); /* Deep blue-black */
-}
-
-/* Buttons */
-body.dark-mode .hero-btn {
-  background: #6a0dad; /* Mystic purple */
+.theme-btn,
+.mute-btn {
+  background: none;
+  border: 1px solid white;
   color: white;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-body.dark-mode .hero-btn:hover {
-  background: #520c99;
+.theme-btn:hover,
+.mute-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
 }
 
-/* Features */
-body.dark-mode .feature {
-  background: rgba(40, 40, 60, 0.85); /* Darker blue-gray */
+body.light-mode .theme-btn,
+body.light-mode .mute-btn {
+  border: 1px solid #3e2a19;
+  color: #3e2a19;
 }
 
-body.dark-mode .feature:hover {
-  box-shadow: 0 0 15px rgba(88, 101, 242, 0.8); /* Mystic blue glow */
+/* 📌 Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1rem;
+  background-color: #121212;
+  color: #ddd;
+  width: 100%;
+}
+
+body.light-mode footer {
+  background-color: #e8d5b5;
+  color: #3e2a19;
 }
