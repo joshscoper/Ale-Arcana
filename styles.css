@@ -5,8 +5,15 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'font';
+  src: url('font.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "font", sans-serif;
   background-color: #1a1a2e;
   color: #f8f8f8;
   line-height: 1.6;
