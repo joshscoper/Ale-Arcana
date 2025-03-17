@@ -71,7 +71,7 @@ header {
   align-items: center;
   justify-content: center; /* centers text vertically */
   padding: 7rem 2rem;
-  background: url("https://cdn.discordapp.com/attachments/1240690610101289122/1350505224686796952/hero-background.jpg?ex=67d6fb80&is=67d5aa00&hm=c0ca4c7a12e232649ad1058d79cc024df7366071b55ab24a37c217cd2d672231&") no-repeat center center/cover;
+  background: url("hero-background.png") no-repeat center center/cover;
   min-height: 500px;
   position: relative;
   text-align: center;
